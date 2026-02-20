@@ -6,8 +6,8 @@ import time
 # --- KONFIGURATION ---
 st.set_page_config(page_title="PrecisionPunt Scanner", page_icon="⚽")
 
-# API-Key Eingabe in der Sidebar
-API_KEY = st.sidebar.text_input("API-Football Key", type="password")
+# Lädt den Key unsichtbar aus den Streamlit Secrets
+API_KEY = st.secrets["MY_API_KEY"]
 BASE_URL = "https://v3.football.api-sports.io"
 
 LEAGUE_IDS = [
@@ -84,4 +84,5 @@ if st.button("🚀 Scan starten"):
             st.success(f"{len(results)} Treffer gefunden!")
             st.table(results)
         else:
+
             st.warning("Keine Treffer gefunden.")
